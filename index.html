@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feiyu</title>
+  <meta name="description" content="Put your description here.">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="shortcut icon" type="image/png" href="/shortcut.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="/shortcut.png" />
+
+  <!-- Application color for Android status bar -->
+  <meta name="theme-color" content="#000000" />
+
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- Android -->
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- ServiceWorker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js').then(
+          registration => {
+            console.log(`ServiceWorker registration successful with scope: ${registration.scope}`);
+          },
+          error => {
+            console.log(`ServiceWorker registration failed: ${error}`);
+          }
+        );
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

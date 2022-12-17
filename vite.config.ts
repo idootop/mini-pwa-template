@@ -9,4 +9,9 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
+  server: {
+    port: 3000,
+    strictPort: true,
+    open: '/index.html',
+  },
 });
