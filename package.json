@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "type": "commonjs",
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "prepare": "husky install",
-    "update": "yarn upgrade --latest",
-    "main": "ts-node -r tsconfig-paths/register src/index"
+    "update": "yarn upgrade --latest"
+  },
+  "dependencies": {
+    "preact": "^10.11.3"
   },
   "devDependencies": {
+    "@preact/preset-vite": "^2.5.0",
     "@types/node": "^18.11.16",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
@@ -23,7 +29,8 @@
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.3.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vite": "^4.0.1"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": "eslint --cache --fix",
