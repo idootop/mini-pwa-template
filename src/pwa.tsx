@@ -1,23 +1,14 @@
-import { useRegisterSW } from 'virtual:pwa-register/preact';
+import { usePWA } from './hooks/pwa';
 
 export const PWA = () => {
-  const {
-    offlineReady: [offlineReady, setOfflineReady],
-    needRefresh: [needRefresh, setNeedRefresh],
-    updateServiceWorker,
-  } = useRegisterSW();
-
-  const close = () => {
-    setOfflineReady(false);
-    setNeedRefresh(false);
-  };
+  const pwa = usePWA();
 
   return (
     <div>
-      {(offlineReady || needRefresh) && (
+      {(pwa.offlineReady || pwa.needUpdate) && (
         <div>
           <div>
-            {offlineReady ? (
+            {pwa.offlineReady ? (
               <span>App ready to work offline</span>
             ) : (
               <span>
@@ -25,10 +16,8 @@ export const PWA = () => {
               </span>
             )}
           </div>
-          {needRefresh && (
-            <button onClick={() => updateServiceWorker(true)}>Reload</button>
-          )}
-          <button onClick={() => close()}>Close</button>
+          {pwa.needUpdate && <button onClick={pwa.update}>Reload</button>}
+          <button onClick={pwa.cancel}>Close</button>
         </div>
       )}
     </div>
