@@ -5,11 +5,12 @@ import { useState } from 'preact/hooks';
 import { printf } from '@/utils/base';
 
 import preactLogo from './assets/preact.svg';
+import { PWA } from './pwa';
 
 export function App() {
   const [count, setCount] = useState(0);
 
-  printf('>>> hello', import.meta.env);
+  printf('>>> hello 111', import.meta.env);
 
   return (
     <>
@@ -24,14 +25,15 @@ export function App() {
       <h1>Vite + Preact</h1>
       <div class="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          Count is {count}
         </button>
         <p>
           Edit <code>src/app.tsx</code> and save to test HMR
         </p>
+        <PWA />
       </div>
       <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more
+        Click on the Vite and Preact logos to learn more (new)
       </p>
     </>
   );
