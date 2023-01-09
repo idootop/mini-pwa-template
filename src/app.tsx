@@ -1,6 +1,7 @@
 import './app.css';
 
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
+import { registerSW } from 'virtual:pwa-register';
 
 import { printf } from '@/utils/base';
 
@@ -9,6 +10,9 @@ import { PWA } from './pwa';
 
 export function App() {
   const [count, setCount] = useState(0);
+  useEffect(() => {
+    registerSW({ immediate: true });
+  }, []);
 
   printf('>>> hello 111', import.meta.env);
 
@@ -33,7 +37,7 @@ export function App() {
         <PWA />
       </div>
       <p class="read-the-docs">
-        Click on the Vite and Preact logos to learn more (new)
+        Click on the Vite and Preact logos to learn more
       </p>
     </>
   );
